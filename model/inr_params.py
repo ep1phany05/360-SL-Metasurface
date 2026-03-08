@@ -1,0 +1,6 @@
+from .common import Logger
+
+HIDDEN_FEATURES = 32
+HIDDEN_LAYERS = 1
+FIRST_OMEGA_0 = 30.
+HIDDEN_OMEGA_0 = 6.

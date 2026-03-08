@@ -1,0 +1,66 @@
+# ------------------------------
+# Python cache and build files
+# ------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# ------------------------------
+# Virtual environments
+# ------------------------------
+.venv/
+venv/
+env/
+
+# ------------------------------
+# IDE / OS
+# ------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ------------------------------
+# Notebook
+# ------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------
+# Project runtime outputs
+# ------------------------------
+runs/
+logs/
+vis/
+*.out
+events.out.tfevents.*
+
+# ------------------------------
+# Large local dataset files
+# ------------------------------
+11518075/
+
+# ------------------------------
+# Model artifacts
+# ------------------------------
+*.pth
+*.pt
+*.ckpt
+*.onnx
+checkpoint/*.npy
+checkpoint/*.npz
+
+# Keep essential static assets
+!checkpoint/pattern.mat
+!fisheye_mask.npy
+!calib_results.txt

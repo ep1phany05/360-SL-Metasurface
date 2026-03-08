@@ -1,0 +1,43 @@
+import torch
+import torch.nn as nn
+from torch.autograd import Variable
+
+
+class E2E(nn.Module):
+
+    def __init__(self, metasurface, renderer, estimator):
+        super().__init__()
+        self.metasurface = metasurface
+        self.renderer = renderer
+        self.estimator = estimator
+
+        self.num = 0
+
+    def forward(self, ref_im_list, depth_map_list, occ_im_list, normal_im_list, return_intermediates=False):
+        # 传递 return_intermediates 参数给 renderer
+        if return_intermediates:
+            synthetic_images, intermediates = self.renderer.render(
+                ref_im_list, depth_map_list, occ_im_list, normal_im_list, return_intermediates=True
+            )
+        else:
+            synthetic_images, illum_img = self.renderer.render(ref_im_list, depth_map_list, occ_im_list, normal_im_list)
+            intermediates = None
+
+        pred_depth = self.estimator(synthetic_images)
+
+        if return_intermediates:
+            return pred_depth, synthetic_images, intermediates
+
+        return pred_depth, synthetic_images
+
+    def get_meta_phase(self):
+        return self.metasurface.get_phase()
+
+    # def update_phase(self, opt):
+    #     self.metasurface.update_phase(opt)
+
+    def get_pattern(self):
+        return self.metasurface.propagate()
+
+    def get_estimator(self):
+        return self.estimator

@@ -1,0 +1,50 @@
+------------------------------------------------------------------------------------------------------------
+========== Origin ==========
+StereoMatching
+python test_with_metrics.py --gpu_ids 0 --use_legacy_physics --phase_layer_type Parameters
+
+========== Diner ==========
+StereoMatching
+python test_with_metrics.py --gpu_ids 0 --use_legacy_physics
+------------------------------------------------------------------------------------------------------------
+========== 251217-201154 old-diner new-colorbar ==========
+StereoMatching_copy
+python test.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+avg_valid_loss    = 0.122043
+avg_valid_l1_loss = 0.102580
+avg_valid_l2_loss = 0.053511
+avg_valid_tv_loss = 0.048656
+
+========== 251217-201145 new-diner new-colorbar ==========
+StereoMatching_copy
+python test.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --laser_power 5.0
+avg_valid_loss    = 0.126842
+avg_valid_l1_loss = 0.107706
+avg_valid_l2_loss = 0.051244
+avg_valid_tv_loss = 0.047841
+------------------------------------------------------------------------------------------------------------
+========== 251226-134155 old-diner new-colorbar new-fig4 ==========
+python train_v2.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+
+========== 251226-143119 old-origin new-colorbar new-fig4 ==========
+python train_v2.py --gpu_ids 1 --phase_layer_type yParameters --use_legacy_physics
+------------------------------------------------------------------------------------------------------------
+/data/wudelong/result/360-sl-metasurface/runs/
+========== 251229-165719 old-origin new-colorbar new-fig4 new-fig3 ==========
+python train_v2.py --gpu_ids 1 --phase_layer_type Parameters --use_legacy_physics
+python test_with_metrics_cam1_only_my.py --phase_layer_type Parameters --use_legacy_physics
+python test_with_metrics_cam1_only_my_v2.py --phase_layer_type Parameters --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/251229-165719/best_epoch_988.pth
+
+========== 251229-165705 old-diner new-colorbar new-fig4 new-fig3 ==========
+python train_v2.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+python test_with_metrics_cam1_only_my.py --phase_layer_type DinerPhaseLayer --use_legacy_physics
+python test_with_metrics_cam1_only_my_v2.py --phase_layer_type DinerPhaseLayer --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/251229-165705/best_epoch_436.pth
+------------------------------------------------------------------------------------------------------------
+/data/wudelong/result/360-sl-metasurface/runs/  !!! tiny DepthEstimator
+========== 260125-172900 origin ==========
+python train_v2.py --gpu_ids 1 --phase_layer_type Parameters --use_legacy_physics
+python test_with_metrics_cam1_only_my_v2.py --phase_layer_type Parameters --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/260125-172900/best_epoch_988.pth
+
+========== 260125-172954 diner ==========
+python train_v2.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+python test_with_metrics_cam1_only_my_v2.py --phase_layer_type DinerPhaseLayer --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/260125-172954/best_epoch_591.pth
