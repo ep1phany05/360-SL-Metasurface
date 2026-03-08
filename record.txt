@@ -1,50 +1,86 @@
-------------------------------------------------------------------------------------------------------------
-========== Origin ==========
-StereoMatching
-python test_with_metrics.py --gpu_ids 0 --use_legacy_physics --phase_layer_type Parameters
+EXPERIMENT LOG (STRUCTURED)
 
-========== Diner ==========
-StereoMatching
-python test_with_metrics.py --gpu_ids 0 --use_legacy_physics
-------------------------------------------------------------------------------------------------------------
-========== 251217-201154 old-diner new-colorbar ==========
-StereoMatching_copy
-python test.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
-avg_valid_loss    = 0.122043
-avg_valid_l1_loss = 0.102580
-avg_valid_l2_loss = 0.053511
-avg_valid_tv_loss = 0.048656
+Purpose
+- Keep experiment history reproducible and searchable.
+- Record one entry per run in a consistent format.
 
-========== 251217-201145 new-diner new-colorbar ==========
-StereoMatching_copy
-python test.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --laser_power 5.0
-avg_valid_loss    = 0.126842
-avg_valid_l1_loss = 0.107706
-avg_valid_l2_loss = 0.051244
-avg_valid_tv_loss = 0.047841
-------------------------------------------------------------------------------------------------------------
-========== 251226-134155 old-diner new-colorbar new-fig4 ==========
-python train_v2.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+Recommended Entry Format
+RUN_ID: <YYMMDD-HHMMSS>
+DATE: <YYYY-MM-DD>
+SCRIPT: <train_enhanced.py / eval_metrics_cam1_plus.py / ...>
+MODEL: <StereoMatching / StereoMatching_tiny / ...>
+PHASE_LAYER: <Parameters / DinerPhaseLayer>
+PHYSICS_MODE: <legacy / fixed>
+KEY_ARGS: <full CLI args>
+CHECKPOINT: <path or N/A>
+RESULTS: <valid_loss=..., valid_l1=..., valid_l2=..., valid_tv=...>
+NOTES: <what changed and why>
 
-========== 251226-143119 old-origin new-colorbar new-fig4 ==========
-python train_v2.py --gpu_ids 1 --phase_layer_type yParameters --use_legacy_physics
-------------------------------------------------------------------------------------------------------------
-/data/wudelong/result/360-sl-metasurface/runs/
-========== 251229-165719 old-origin new-colorbar new-fig4 new-fig3 ==========
-python train_v2.py --gpu_ids 1 --phase_layer_type Parameters --use_legacy_physics
-python test_with_metrics_cam1_only_my.py --phase_layer_type Parameters --use_legacy_physics
-python test_with_metrics_cam1_only_my_v2.py --phase_layer_type Parameters --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/251229-165719/best_epoch_988.pth
+------------------------------------------------------------------
+MIGRATED HISTORICAL ENTRIES (from old free-form notes)
 
-========== 251229-165705 old-diner new-colorbar new-fig4 new-fig3 ==========
-python train_v2.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
-python test_with_metrics_cam1_only_my.py --phase_layer_type DinerPhaseLayer --use_legacy_physics
-python test_with_metrics_cam1_only_my_v2.py --phase_layer_type DinerPhaseLayer --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/251229-165705/best_epoch_436.pth
-------------------------------------------------------------------------------------------------------------
-/data/wudelong/result/360-sl-metasurface/runs/  !!! tiny DepthEstimator
-========== 260125-172900 origin ==========
-python train_v2.py --gpu_ids 1 --phase_layer_type Parameters --use_legacy_physics
-python test_with_metrics_cam1_only_my_v2.py --phase_layer_type Parameters --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/260125-172900/best_epoch_988.pth
+RUN_ID: 251217-201154
+DATE: 2025-12-17
+SCRIPT: eval_depth.py
+MODEL: StereoMatching_copy
+PHASE_LAYER: DinerPhaseLayer
+PHYSICS_MODE: legacy
+KEY_ARGS: --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+CHECKPOINT: runs/251217-201154/best_epoch_389.pth (historical reference)
+RESULTS: valid_loss=0.122043, valid_l1=0.102580, valid_l2=0.053511, valid_tv=0.048656
+NOTES: old-diner, new-colorbar
 
-========== 260125-172954 diner ==========
-python train_v2.py --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
-python test_with_metrics_cam1_only_my_v2.py --phase_layer_type DinerPhaseLayer --use_legacy_physics --ckpt_path /data/wudelong/result/360-sl-metasurface/runs/260125-172954/best_epoch_591.pth
+RUN_ID: 251217-201145
+DATE: 2025-12-17
+SCRIPT: eval_depth.py
+MODEL: StereoMatching_copy
+PHASE_LAYER: DinerPhaseLayer
+PHYSICS_MODE: fixed
+KEY_ARGS: --gpu_ids 0 --phase_layer_type DinerPhaseLayer --laser_power 5.0
+CHECKPOINT: runs/251217-201145/best_epoch_645.pth (historical reference)
+RESULTS: valid_loss=0.126842, valid_l1=0.107706, valid_l2=0.051244, valid_tv=0.047841
+NOTES: new-diner, new-colorbar
+
+RUN_ID: 251229-165719
+DATE: 2025-12-29
+SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+MODEL: StereoMatching_tiny
+PHASE_LAYER: Parameters
+PHYSICS_MODE: legacy
+KEY_ARGS: train --gpu_ids 1 --phase_layer_type Parameters --use_legacy_physics
+CHECKPOINT: /data/wudelong/result/360-sl-metasurface/runs/251229-165719/best_epoch_988.pth
+RESULTS: N/A in source note
+NOTES: old-origin, new-colorbar, fig3/fig4 pipeline
+
+RUN_ID: 251229-165705
+DATE: 2025-12-29
+SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+MODEL: StereoMatching_tiny
+PHASE_LAYER: DinerPhaseLayer
+PHYSICS_MODE: legacy
+KEY_ARGS: train --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+CHECKPOINT: /data/wudelong/result/360-sl-metasurface/runs/251229-165705/best_epoch_436.pth
+RESULTS: N/A in source note
+NOTES: old-diner, new-colorbar, fig3/fig4 pipeline
+
+RUN_ID: 260125-172900
+DATE: 2026-01-25
+SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+MODEL: StereoMatching_tiny
+PHASE_LAYER: Parameters
+PHYSICS_MODE: legacy
+KEY_ARGS: train --gpu_ids 1 --phase_layer_type Parameters --use_legacy_physics
+CHECKPOINT: /data/wudelong/result/360-sl-metasurface/runs/260125-172900/best_epoch_988.pth
+RESULTS: N/A in source note
+NOTES: tiny DepthEstimator setting
+
+RUN_ID: 260125-172954
+DATE: 2026-01-25
+SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+MODEL: StereoMatching_tiny
+PHASE_LAYER: DinerPhaseLayer
+PHYSICS_MODE: legacy
+KEY_ARGS: train --gpu_ids 0 --phase_layer_type DinerPhaseLayer --use_legacy_physics
+CHECKPOINT: /data/wudelong/result/360-sl-metasurface/runs/260125-172954/best_epoch_591.pth
+RESULTS: N/A in source note
+NOTES: tiny DepthEstimator setting
