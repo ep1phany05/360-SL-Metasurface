@@ -7,7 +7,7 @@ Purpose
 Recommended Entry Format
 RUN_ID: <YYMMDD-HHMMSS>
 DATE: <YYYY-MM-DD>
-SCRIPT: <train_enhanced.py / eval_metrics_cam1_plus.py / ...>
+SCRIPT: <scripts.train_enhanced / scripts.eval_metrics_cam1_plus / ...>
 MODEL: <StereoMatching / StereoMatching_tiny / ...>
 PHASE_LAYER: <Parameters / DinerPhaseLayer>
 PHYSICS_MODE: <legacy / fixed>
@@ -21,7 +21,7 @@ MIGRATED HISTORICAL ENTRIES (from old free-form notes)
 
 RUN_ID: 251217-201154
 DATE: 2025-12-17
-SCRIPT: eval_depth.py
+SCRIPT: scripts.eval_depth
 MODEL: StereoMatching_copy
 PHASE_LAYER: DinerPhaseLayer
 PHYSICS_MODE: legacy
@@ -32,7 +32,7 @@ NOTES: old-diner, new-colorbar
 
 RUN_ID: 251217-201145
 DATE: 2025-12-17
-SCRIPT: eval_depth.py
+SCRIPT: scripts.eval_depth
 MODEL: StereoMatching_copy
 PHASE_LAYER: DinerPhaseLayer
 PHYSICS_MODE: fixed
@@ -43,7 +43,7 @@ NOTES: new-diner, new-colorbar
 
 RUN_ID: 251229-165719
 DATE: 2025-12-29
-SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+SCRIPT: scripts.train_enhanced + scripts.eval_metrics_cam1_plus
 MODEL: StereoMatching_tiny
 PHASE_LAYER: Parameters
 PHYSICS_MODE: legacy
@@ -54,7 +54,7 @@ NOTES: old-origin, new-colorbar, fig3/fig4 pipeline
 
 RUN_ID: 251229-165705
 DATE: 2025-12-29
-SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+SCRIPT: scripts.train_enhanced + scripts.eval_metrics_cam1_plus
 MODEL: StereoMatching_tiny
 PHASE_LAYER: DinerPhaseLayer
 PHYSICS_MODE: legacy
@@ -65,7 +65,7 @@ NOTES: old-diner, new-colorbar, fig3/fig4 pipeline
 
 RUN_ID: 260125-172900
 DATE: 2026-01-25
-SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+SCRIPT: scripts.train_enhanced + scripts.eval_metrics_cam1_plus
 MODEL: StereoMatching_tiny
 PHASE_LAYER: Parameters
 PHYSICS_MODE: legacy
@@ -76,7 +76,7 @@ NOTES: tiny DepthEstimator setting
 
 RUN_ID: 260125-172954
 DATE: 2026-01-25
-SCRIPT: train_enhanced.py + eval_metrics_cam1_plus.py
+SCRIPT: scripts.train_enhanced + scripts.eval_metrics_cam1_plus
 MODEL: StereoMatching_tiny
 PHASE_LAYER: DinerPhaseLayer
 PHYSICS_MODE: legacy

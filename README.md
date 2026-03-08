@@ -15,7 +15,7 @@ A research codebase for 360-degree structured light with learned metasurfaces.
 - `Image_formation/`: differentiable rendering pipeline
 - `dataset/`: dataset loader and synthetic data generation scripts
 - `utils/`: argument parsing, camera models, network utilities, rendering utilities
-- top-level scripts: training, evaluation, comparison, and plotting entrypoints
+- `scripts/`: training, evaluation, comparison, and plotting entrypoints
 
 ## Environment Setup
 
@@ -39,35 +39,35 @@ These defaults are defined in `utils/ArgParser.py`.
 ### Training
 
 ```bash
-python train_baseline.py
-python train_enhanced.py
+python -m scripts.train_baseline
+python -m scripts.train_enhanced
 ```
 
 ### Depth Evaluation
 
 ```bash
-python eval_depth.py
+python -m scripts.eval_depth
 ```
 
 ### Metric Evaluation
 
 ```bash
-python eval_metrics_cam1.py
-python eval_metrics_cam1_legacy.py
-python eval_metrics_cam1_plus.py
-python eval_metrics_cam_both.py
+python -m scripts.eval_metrics_cam1
+python -m scripts.eval_metrics_cam1_legacy
+python -m scripts.eval_metrics_cam1_plus
+python -m scripts.eval_metrics_cam_both
 ```
 
 ### Comparison and Visualization
 
 ```bash
-python compare_loss.py
-python compare_phase_maps.py
-python select_best_checkpoint.py
-python plot_radar_metrics.py
-python plot_phase_map.py
-python plot_phase_map_with_circle.py
-python plot_phase_map_with_circle_v2.py
+python -m scripts.compare_loss
+python -m scripts.compare_phase_maps
+python -m scripts.select_best_checkpoint
+python -m scripts.plot_radar_metrics
+python -m scripts.plot_phase_map
+python -m scripts.plot_phase_map_with_circle
+python -m scripts.plot_phase_map_with_circle_v2
 ```
 
 ### Dataset Generation
